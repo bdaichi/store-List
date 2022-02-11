@@ -72,7 +72,7 @@ export default function ShopPage() {
     return (
         <>
             <Header title='詳細ページ' />
-            <div>{(shop && favorite) &&
+            <div>{shop &&
                 <>
                     <div className='sticky top-0 z-10'>
                         <NavBar />

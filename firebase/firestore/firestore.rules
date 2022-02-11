@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+    match /databases/{database}/documents {
+
+        // users domain
+        match /users/{userId} {
+            allow read;
+            allow create: if request.auth != null;
+            allow update: if request.auth.uid == userId;
+
+            //favorites domain
+            match /favorites/{shopId} {
+                allow read: if request.auth.uid == get(/databases/$(database)/documents/users/$(userId)).data.userId;
+                allow create: if request.auth != null;
+                allow update: if request.auth.uid == resourece.data.userId; 
+            }
+        }
+
+        //shops domain 
+        match /shops/{shopId} {
+            allow read;
+            allow create: if request.auth != null;
+            allow update: if request.auth.uid == resourece.data.userId; 
+        }
+
+        //requests domain
+        match /requests/{shopId} {
+            allow read: if request.auth.uid == get(/databases/$(database)/documents/requests/$(shopId).data.createUserId)
+            allow create;
+
+            //messages domain
+            match /messages/{messageId} {
+                allow read: if request.auth.uid == get(/databases/$(database)/documents/requests/$(shopId).data.createUserId)
+                allow create;
+            }
+        }
+    }    
+}

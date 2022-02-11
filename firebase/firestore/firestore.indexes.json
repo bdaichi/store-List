@@ -1,0 +1,47 @@
+{
+    "indexes": [
+        {
+            "collectionGroup": "shops",
+            "queryScope": "COLLECTION",
+            "fields": [
+                {
+                    "fieldPath": "shopPrefecture",
+                    "order": "ASCENDING"
+                },
+                {
+                    "fieldPath": "shopName",
+                    "order": "DESCENDING"
+                }
+            ]
+        },
+        {
+            "collectionGroup": "requests",
+            "queryScope": "COLLECTION",
+            "fields": [
+                {
+                    "fieldPath": "createUserId",
+                    "order": "ASCENDING"
+                },
+                {
+                    "fieldPath": "upDatedAt",
+                    "order": "DESCENDING"
+                }
+            ]
+        },
+        {
+            "collectionGroup": "shops",
+            "queryScope": "COLLECTION",
+            "fields": [
+                {
+                    "fieldPath": "shopPrefecture",
+                    "order": "ASCENDING"
+                },
+                {
+                    "fieldPath": "shopName",
+                    "order": "ASCENDING"
+                }
+            ]
+        }
+    ],
+    "fieldOverrides": []
+}

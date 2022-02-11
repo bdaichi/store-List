@@ -22,7 +22,7 @@ import { updateUserData } from "../../service/user_service";
 
 type Props = {
     shop: Shop
-    favorite: Favorite
+    favorite: Favorite | null
     isOpenShopPage: boolean
     setIsReloadData: Dispatch<SetStateAction<boolean>>
 }
@@ -130,7 +130,7 @@ export default function ShopDataField(props: Props) {
     return (
         <>{props.shop &&
             <div className='flex flex-col'>
-                <div className='flex absolute right-8 top-28'>{props.favorite.shopId ?
+                <div className='flex absolute right-8 top-28'>{(props.favorite && props.favorite.shopId != '') ?
                     <div >
                         <Button
                             variant='outlined'
@@ -160,7 +160,7 @@ export default function ShopDataField(props: Props) {
                         </Button>
                     }</div>
                 }</div>
-                <div className='flex absolute right-8 top-44'>{(currentUser!.userId == props.shop.createUserId) ?
+                <div className='flex absolute right-8 top-44'>{(currentUser && currentUser.userId == props.shop.createUserId) ?
                     <Button
                         variant='outlined'
                         style={{ borderWidth: 1, borderColor: '#00a6af', color: '#00a6af', }}
@@ -199,7 +199,7 @@ export default function ShopDataField(props: Props) {
                         </div>
                     </>
                 }</div>
-                {props.favorite.shopId ?
+                {(props.favorite && props.favorite.shopId != '') ?
                     //お気に入り登録してる場合
                     <div className='flex justify-center flex-col md:mt-12'>
                         <div className='flex justify-center flex-col md:flex-row'>

@@ -2,13 +2,9 @@ import { auth } from "./firebase_service";
 import firebase from "firebase/app";
 
 export async function authSendSignInLinkToEmail(email: string) {
-    if (process.env.NEXT_PUBLIC_SIGN_IN_URL == undefined) {
-        console.log('url is undefined');
-        return;
-    }
     // メールリンクで開くページを設定(環境ごとに設定必要)
     const actionCodeSettings = {
-        url: process.env.NEXT_PUBLIC_SIGN_IN_URL,
+        url: 'https://storelist.vercel.app/sign_in',
         handleCodeInApp: true,
     }
     try {

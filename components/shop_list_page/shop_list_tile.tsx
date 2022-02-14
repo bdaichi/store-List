@@ -11,7 +11,7 @@ export default function ShopListTile(props: Props) {
 
     return (
         <>
-            <div className='flex flex-col justify-center shadow-2xl transform -skew-y-2 pl-4 my-4 rounded-xl px-5 bg-white md:flex-row py-4' style={{ borderTopWidth: 2, borderLeftWidth: 2, borderBottomWidth: 4, borderRightWidth: 7, borderColor: props.color, }}>
+            <div className='flex flex-col justify-center shadow-2xl transform -skew-y-2 pl-4 mx-12 my-8 rounded-xl px-5 bg-white md:flex-row py-4' style={{ borderTopWidth: 2, borderLeftWidth: 2, borderBottomWidth: 4, borderRightWidth: 7, borderColor: props.color, }}>
                 <div className='shadow-xl border-r-8 border-b-4 border-gray-300 border-opacity-25'>
                     <ShopImage imageUrl={props.imageUrl} size={100} />
                 </div>

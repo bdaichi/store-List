@@ -51,7 +51,7 @@ export default function ExplanationPage() {
         <>
             <Header title="説明ページ" />
             <div className='flex justify-center rounded-md fixed bottom-4 left-44 right-44 bg-white z-10'>
-                <p className='text-xl'>{pageNumber} / 4</p>
+                <p className='text-base'>{pageNumber} / 4</p>
             </div>
             <div className='flex flex-col absolute top-4 z-0'>
                 <div>{!isOpenNavBar &&

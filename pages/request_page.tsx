@@ -90,7 +90,7 @@ export default function RequestPage() {
             <Header title='依頼ページ' />
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <div className='fixed top-0 z-20' style={{ backgroundColor: !isOpenNavBar ? '' : 'white', height: !isOpenNavBar ? 0 : 100, width: !isOpenNavBar ? 0 : '100%', minWidth: !isOpenNavBar ? 0 : 410, maxWidth: !isOpenNavBar ? 0 : 1000, }}>{isOpenNavBar &&
+                <div className='fixed top-0 z-50' style={{ backgroundColor: !isOpenNavBar ? '' : 'white', height: !isOpenNavBar ? 0 : 100, width: !isOpenNavBar ? 0 : '100%', minWidth: !isOpenNavBar ? 0 : 410, maxWidth: !isOpenNavBar ? 0 : 1000, }}>{isOpenNavBar &&
                     <div className='z-30 md:z-50'>
                         <IconButton onClick={closeNavBar} style={{ width: 60, height: 30, }}>
                             <ExpandLessIcon style={{ width: 40, height: 40, color: '#00a6af' }} />

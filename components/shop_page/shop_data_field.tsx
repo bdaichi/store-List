@@ -140,7 +140,7 @@ export default function ShopDataField(props: Props) {
                         </Button>
                     </div>
                     :
-                    <div>{(alertMessage != '') ?
+                    <div>{alertMessage ?
                         <div className='bg-white' style={{ borderWidth: (alertMessage != '') ? 2 : 0, borderColor: '#00a6af', }}>
                             <div>
                                 <p className='p-4 text-red-500'>{alertMessage}</p>

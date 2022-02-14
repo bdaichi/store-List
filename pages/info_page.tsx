@@ -46,7 +46,7 @@ export default function InfoPage() {
                 }</div>
             </div>
             <div className='flex justify-center flex-col'>
-                <div className='flex absolute top-8 right-12' style={{ borderBottomWidth: 1, borderColor: '#00a6af', }}>{!isOpenNavBar &&
+                <div className='flex absolute text-base top-8 right-12' style={{ borderBottomWidth: 1, borderColor: '#00a6af', }}>{!isOpenNavBar &&
                     <Button
                         variant='text'
                         style={{ fontFamily: '筑紫A丸ゴシック', color: '#00a6af', }}
@@ -56,6 +56,11 @@ export default function InfoPage() {
                         <HelpOutlineIcon style={{ color: '#00a6af', }} />
                     </Button>
                 }</div>
+                <div className='flex absolute top-20 right-14 text-base py-1' style={{ fontFamily: '筑紫A丸ゴシック', color: '#00a6af', borderBottomWidth: 1, borderColor: '#00a6af', }}>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScYjS1JR521ZWnbhUWLHza5kzmNnbsL3DgvxEvW0sZ2aRPdKQ/viewform?usp=sf_link">
+                        お問い合わせはこちら
+                    </a>
+                </div>
                 <div className='flex flex-col justify-center items-center mt-40 md:flex-row md:mt-64' >
                     <div className='my-8' style={{ fontFamily: "fantasy", color: '#00a6af', }}>
                         <p className='text-6xl'>Store</p>
@@ -70,7 +75,7 @@ export default function InfoPage() {
                         <p className='flex justify-center'>幸いです</p>
                     </div>
                 </div>
-                <div className='flex justify-center mt-16' style={{ fontFamily: '筑紫A丸ゴシック', }}>
+                {/* <div className='flex justify-center mt-16' style={{ fontFamily: '筑紫A丸ゴシック', }}>
                     <p className='text-xl'>開発者から</p>
                 </div>
                 <div className='rounded-xl shadow-inner my-4 mx-12 p-8' style={{ fontFamily: '筑紫A丸ゴシック', borderWidth: 2, borderColor: '#00a6af', }}>
@@ -95,7 +100,7 @@ export default function InfoPage() {
                         至らぬ点が多いと思いますが、
                         ぜひ使ってください
                     </p>
-                </div>
+                </div> */}
             </div>
         </>
     )

@@ -44,7 +44,6 @@ export default function NavBar() {
 
     const logOut = async () => {
         await auth.signOut();
-        router.push('/sign_in')
     }
 
     const closeAlertMessage = () => {

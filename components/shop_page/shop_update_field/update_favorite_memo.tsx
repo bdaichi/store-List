@@ -22,7 +22,7 @@ export default function UpdateFavoriteMemo(props: Props) {
 
     const updateFavoriteMemo = async () => {
         if (currentUser) {
-            const updateFavorite = props.favorite.copyWith(editingFavoriteMemo, null,)
+            const updateFavorite = props.favorite.copyWith(editingFavoriteMemo, null)
             await updatefavorites(currentUser.userId, updateFavorite)
             setIsEiditingFavoriteMemo(false)
             props.setIsReloadData(false)
@@ -50,7 +50,7 @@ export default function UpdateFavoriteMemo(props: Props) {
                                 </div>
                             </div>
                             <div className='rounded-md shadow-2xl text-xl h-44 w-72 p-4 md:h-52 lg:text-2xl' style={{ borderWidth: 2, borderColor: '#ff4081', }}>
-                                <p>{props.favorite.memoColumn}</p>
+                                <p className='whitespace-pre-wrap' style={{ fontFamily: '筑紫A丸ゴシック' }}>{props.favorite.memoColumn}</p>
                             </div>
                         </div>
                     }</div>

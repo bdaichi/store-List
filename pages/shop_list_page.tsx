@@ -224,12 +224,12 @@ export default function ShopListPage() {
                 :
                 <>
                     <div className='flex flex-col pt-12 md:pt-24' style={{ alignItems: 'center', }}>{shops.map((shop) =>
-                        <div key={shop.shopId} className='z-0 my-4 md:my-10'>
+                        <div key={shop.shopId} className='z-0 my-4 px-10 my-10'>
                             <div>
                                 <Button
                                     onClick={() => openShopPage(shop.shopId)}
                                 >
-                                    <div className=''>
+                                    <div>
                                         <ShopListTile
                                             imageUrl={shop.shopImageUrl}
                                             shopName={shop.shopName}

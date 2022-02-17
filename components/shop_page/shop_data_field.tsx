@@ -93,7 +93,7 @@ export default function ShopDataField(props: Props) {
     const sendMessageAndUpdateLatestMessage = async () => {
         if (currentUser && props.shop) {
             if (requests && (requests[0] != null)) {
-                console.log('すでにあるで〜〜')
+                console.log('作成済み')
             } else {
                 const request = Request.createRequest(props.shop.shopName, props.shop.shopId, props.shop.createUserId, '')
                 await createRequestRoom(request)
@@ -130,7 +130,7 @@ export default function ShopDataField(props: Props) {
     return (
         <>{props.shop &&
             <div className='flex flex-col'>
-                <div className='flex absolute right-8 top-28'>{(props.favorite && props.favorite.shopId != '') ?
+                <div className='flex absolute right-8 top-36'>{(props.favorite && props.favorite.shopId != '') ?
                     <div >
                         <Button
                             variant='outlined'
@@ -140,7 +140,7 @@ export default function ShopDataField(props: Props) {
                         </Button>
                     </div>
                     :
-                    <div>{alertMessage ?
+                    <div>{(alertMessage != '') ?
                         <div className='bg-white' style={{ borderWidth: (alertMessage != '') ? 2 : 0, borderColor: '#00a6af', }}>
                             <div>
                                 <p className='p-4 text-red-500'>{alertMessage}</p>
@@ -160,7 +160,7 @@ export default function ShopDataField(props: Props) {
                         </Button>
                     }</div>
                 }</div>
-                <div className='flex absolute right-8 top-44'>{(currentUser && currentUser.userId == props.shop.createUserId) ?
+                <div className='flex absolute right-8 top-52'>{(currentUser && currentUser.userId == props.shop.createUserId) ?
                     <Button
                         variant='outlined'
                         style={{ borderWidth: 1, borderColor: '#00a6af', color: '#00a6af', }}
@@ -203,15 +203,15 @@ export default function ShopDataField(props: Props) {
                     //お気に入り登録してる場合
                     <div className='flex justify-center flex-col md:mt-12'>
                         <div className='flex justify-center flex-col md:flex-row'>
-                            <div className='mt-24 md:mx-8 '>
-                                <div className='flex justify-center my-12 md:my-4 text-2xl lg:text-3xl'>
+                            <div className='mt-40 md:mx-8'>
+                                <div className='flex justify-center items-center my-12 md:my-4 text-2xl lg:text-3xl'>
                                     <ShopNameField shopName={props.shop.shopName} />
                                 </div>
                                 <div className='flex justify-center my-4'>
                                     <ShopImage imageUrl={props.shop.shopImageUrl} size={'auto'} />
                                 </div>
                             </div>
-                            <div className='flex justify-center flex-col mx-8 my-10 md:pt-8' style={{ alignItems: 'center', }}>
+                            <div className='flex justify-center flex-col mx-8 my-10 md:pt-24' style={{ alignItems: 'center', }}>
                                 <UpdateFavoriteMemo favorite={props.favorite} setIsReloadData={props.setIsReloadData} />
                             </div>
                         </div>
@@ -222,15 +222,15 @@ export default function ShopDataField(props: Props) {
                     :
                     //お気に入り登録してない場合
                     <div className='flex justify-center flex-col md:flex-row'>
-                        <div className='mt-24 md:mx-8'>
-                            <div className='flex justify-center my-8 md:my-4 text-2xl lg:text-3xl'>
+                        <div className='mt-40 md:mx-8'>
+                            <div className='flex justify-center items-center my-8 md:my-4 text-2xl lg:text-3xl'>
                                 <ShopNameField shopName={props.shop.shopName} />
                             </div>
                             <div className='flex justify-center my-4'>
                                 <ShopImage imageUrl={props.shop.shopImageUrl} size={'auto'} />
                             </div>
                         </div>
-                        <div className='flex justify-center pt-8 md:pt-24 md:mx-4' style={{ alignItems: 'center', }}>
+                        <div className='flex justify-center pt-8 md:pt-40 md:mx-4' style={{ alignItems: 'center', }}>
                             <ShopSummaryList shopSummary={props.shop.shopSummary} />
                         </div>
                     </div>

@@ -52,13 +52,13 @@ export default function InfoPage() {
                         style={{ fontFamily: '筑紫A丸ゴシック', color: '#00a6af', }}
                         onClick={routerExplanationPage}
                     >
-                        <p className='mx-2'>詳しい説明を見る</p>
+                        <p className='mx-2 text-sm md:text-base'>詳しい説明を見る</p>
                         <HelpOutlineIcon style={{ color: '#00a6af', }} />
                     </Button>
                 }</div>
-                <div className='flex absolute top-20 right-14 text-base py-1' style={{ fontFamily: '筑紫A丸ゴシック', color: '#00a6af', borderBottomWidth: 1, borderColor: '#00a6af', }}>
+                <div className='flex absolute top-20 right-14 text-sm md:text-base p-1' style={{ fontFamily: '筑紫A丸ゴシック', color: '#00a6af', borderBottomWidth: 1, borderColor: '#00a6af', }}>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLScYjS1JR521ZWnbhUWLHza5kzmNnbsL3DgvxEvW0sZ2aRPdKQ/viewform?usp=sf_link">
-                        お問い合わせはこちら
+                        お問い合わせ
                     </a>
                 </div>
                 <div className='flex flex-col justify-center items-center mt-40 md:flex-row md:mt-64' >

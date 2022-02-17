@@ -211,7 +211,7 @@ export default function ShopDataField(props: Props) {
                                     <ShopImage imageUrl={props.shop.shopImageUrl} size={'auto'} />
                                 </div>
                             </div>
-                            <div className='flex justify-center flex-col mx-8 my-10 md:pt-8' style={{ alignItems: 'center', }}>
+                            <div className='flex justify-center flex-col mx-8 my-10 md:pt-24' style={{ alignItems: 'center', }}>
                                 <UpdateFavoriteMemo favorite={props.favorite} setIsReloadData={props.setIsReloadData} />
                             </div>
                         </div>
@@ -230,7 +230,7 @@ export default function ShopDataField(props: Props) {
                                 <ShopImage imageUrl={props.shop.shopImageUrl} size={'auto'} />
                             </div>
                         </div>
-                        <div className='flex justify-center pt-8 md:pt-24 md:mx-4' style={{ alignItems: 'center', }}>
+                        <div className='flex justify-center pt-8 md:pt-40 md:mx-4' style={{ alignItems: 'center', }}>
                             <ShopSummaryList shopSummary={props.shop.shopSummary} />
                         </div>
                     </div>

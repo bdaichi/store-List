@@ -78,7 +78,7 @@ export default function ShopUpdateField(props: Props) {
                 </IconButton>
                 <div className='fixed flex bottom-0 shadow-2xl bg-white z-40 mb-20' style={{ borderWidth: isConfirmation ? 2 : 0, borderColor: '#00a6af', }}>
                     {isConfirmation &&
-                        <div className='flex flex-col m-10' >
+                        <div className='flex flex-col justify-center items-center m-10' >
                             <p className='my-4' style={{ color: '#00a6af', }}>本当に削除しますか</p>
                             <div>
                                 <Button onClick={deleteShopData} style={{ color: '#00a6af', }}>

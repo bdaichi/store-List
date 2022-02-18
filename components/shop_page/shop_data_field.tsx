@@ -78,11 +78,11 @@ export default function ShopDataField(props: Props) {
         }
     }
 
-    const displayMessageField = () => {
+    const displaySendMessageField = () => {
         setIsMessageField(true)
     }
 
-    const closeMessageField = () => {
+    const closeSendMessageField = () => {
         setIsMessageField(false)
     }
 
@@ -118,6 +118,10 @@ export default function ShopDataField(props: Props) {
 
     const closeAlertMessage = () => {
         setAlertMessage('')
+    }
+
+    const closeSignInAlert = () => {
+        setIsSignInAlert(false)
     }
 
     useEffect(() => {
@@ -172,7 +176,7 @@ export default function ShopDataField(props: Props) {
                     <Button
                         variant='outlined'
                         style={{ borderWidth: 1, borderColor: '#00a6af', color: '#00a6af', }}
-                        onClick={displayMessageField}>
+                        onClick={displaySendMessageField}>
                         <p className='mx-2' style={{ color: '#00a6af', fontFamily: '筑紫A丸ゴシック' }}>登録者にメッセージを送る</p>
                         <ForwardToInboxIcon />
                     </Button>
@@ -189,7 +193,7 @@ export default function ShopDataField(props: Props) {
                             onChange={sendMessageHandler}
                         />
                         <div className='flex flex-row my-2'>
-                            <Button onClick={closeMessageField} style={{ height: '70%', color: '#00a6af', marginLeft: 20, }}>
+                            <Button onClick={closeSendMessageField} style={{ height: '70%', color: '#00a6af', marginLeft: 20, }}>
                                 <p className='text-lg' style={{ color: '#00a6af', fontFamily: '筑紫A丸ゴシック' }}>キャンセル</p>
                             </Button>
                             <Button onClick={sendMessageAndUpdateLatestMessage} style={{ height: '70%', color: '#00a6af', marginLeft: 20, }}>
@@ -254,7 +258,7 @@ export default function ShopDataField(props: Props) {
                                 <p style={{ fontFamily: '筑紫A丸ゴシック' }}>ログイン、新規登録する</p>
                             </Button>
                         </div>
-                        <IconButton onClick={closeAlertMessage} style={{ color: 'red', }}>
+                        <IconButton onClick={closeSignInAlert} style={{ color: 'red', }}>
                             <CancelIcon style={{ height: 30, width: 30, }} />
                         </IconButton>
                     </div>

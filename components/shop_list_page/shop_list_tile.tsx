@@ -15,7 +15,7 @@ export default function ShopListTile(props: Props) {
                 <div className='shadow-xl border-r-8 border-b-4 border-gray-300 border-opacity-25'>
                     <ShopImage imageUrl={props.imageUrl} size={100} />
                 </div>
-                <div className='flex justify-center items-center transform -rotate-2 pr-2 text-2xl my-8 mx-8 md:w-64' style={{ color: 'black', }}>
+                <div className='flex justify-center items-center transform -rotate-2 pr-2 text-2xl my-8 mx-8 md:w-64' style={{ color: 'black', textTransform: 'none', }}>
                     <ShopNameField shopName={props.shopName} />
                 </div>
             </div>

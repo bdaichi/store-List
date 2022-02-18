@@ -14,6 +14,7 @@ export async function createRequestRoom(request: Request) {
 }
 
 export async function deleteRequest(shopId: string) {
+    await db.collection('requests').doc(shopId).collection('messages').doc().delete();
     await db.collection('requests').doc(shopId).delete();
 }
 

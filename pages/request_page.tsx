@@ -191,7 +191,7 @@ export default function RequestPage() {
                         </div>
                         :
                         <div className='ml-24 mt-72 text-xl md:ml-96'>
-                            <h1 className='md:ml-32' style={{ color: '#00a6af', fontFamily: '筑紫A丸ゴシック' }}>お店を選んでください</h1>
+                            <h1 className='md:ml-24' style={{ color: '#00a6af', fontFamily: '筑紫A丸ゴシック' }}>お店を選んでください</h1>
                         </div>
                     }
                 </div>

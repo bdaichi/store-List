@@ -41,7 +41,7 @@ export default function RequestRoom(props: Props) {
                 <div className='absolute left-0 my-24 pb-56'>{messages.map((message) =>
                     <div key={message.messageId} className='mx-8 my-4 md:ml-96'>
                         <AccountCircleIcon style={{ width: 40, height: 40, color: '#006978' }} />
-                        <p className='rounded-md p-2 my-2' style={{ color: '#00363a', borderWidth: 1, borderColor: '#006978', width: 'auto', maxWidth: 363, }}>{message.message}</p>
+                        <p className='rounded-md p-2 my-2' style={{ color: '#00363a', borderWidth: 1, borderColor: '#006978', width: 'auto', maxWidth: 363, textTransform: 'none', }}>{message.message}</p>
                     </div>
                 )}</div>
             </div >

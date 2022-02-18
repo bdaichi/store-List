@@ -91,32 +91,34 @@ export default function RequestPage() {
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
                 <div className='fixed top-0 z-50' style={{ backgroundColor: !isOpenNavBar ? '' : 'white', height: !isOpenNavBar ? 0 : 100, width: !isOpenNavBar ? 0 : '100%', minWidth: !isOpenNavBar ? 0 : 410, maxWidth: !isOpenNavBar ? 0 : 1000, }}>{isOpenNavBar &&
-                    <div className='z-30 md:z-50'>
+                    <div className='z-50'>
                         <IconButton onClick={closeNavBar} style={{ width: 60, height: 30, }}>
                             <ExpandLessIcon style={{ width: 40, height: 40, color: '#00a6af' }} />
                         </IconButton>
                         <NavBar />
                     </div>
                 }</div>
-                <AppBar
-                    className='z-10'
-                    position="fixed"
-                >
-                    <Toolbar>
-                        <IconButton
-                            className='md:hidden ... z-10'
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            onClick={handleDrawerOpen}
-                        >
-                            <MenuIcon style={{ height: 40, width: 40, color: '#00a6af' }} />
-                        </IconButton>
-                        <Typography variant="h6" noWrap component="div">
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <div>
+                <div className='z-10'>
+                    <AppBar
+                        className='z-10'
+                        position="fixed"
+                    >
+                        <Toolbar>
+                            <IconButton
+                                className='md:hidden ... z-10'
+                                edge="start"
+                                color="inherit"
+                                aria-label="menu"
+                                onClick={handleDrawerOpen}
+                            >
+                                <MenuIcon style={{ height: 40, width: 40, color: '#00a6af' }} />
+                            </IconButton>
+                            <Typography variant="h6" noWrap component="div">
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </div>
+                <div className='z-10'>
                     {open == true ?
                         <Drawer
                             className='grid z-10 md:w-64'
@@ -184,12 +186,12 @@ export default function RequestPage() {
                 </div>
                 <div className="z-0" >
                     {openRequest ?
-                        <div className="">
+                        <div>
                             <RequestRoom request={openRequest} />
                         </div>
                         :
                         <div className='ml-24 mt-72 text-xl md:ml-96'>
-                            <h1 style={{ color: '#00a6af', fontFamily: '筑紫A丸ゴシック' }}>お店を選んでください</h1>
+                            <h1 className='md:ml-32' style={{ color: '#00a6af', fontFamily: '筑紫A丸ゴシック' }}>お店を選んでください</h1>
                         </div>
                     }
                 </div>

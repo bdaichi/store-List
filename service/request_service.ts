@@ -31,3 +31,7 @@ export async function setLatestMassage(requestId: string, latestMessage: string)
         console.log('setLatestMessageAntSetUpDatedAt Error: ', e)
     }
 }
+
+export async function updateRepuestName(shopId: string, requestName: string) {
+    await db.collection('requests').doc(shopId).set({ 'requestName': requestName }, { merge: true })
+}

@@ -51,6 +51,8 @@ export default function UpdateShopNameFeild(props: Props) {
                 <div>
                     <TextField
                         className='w-60'
+                        multiline={true}
+                        rows={2}
                         defaultValue={props.shop.shopName}
                         id='shopName'
                         label='表示名'

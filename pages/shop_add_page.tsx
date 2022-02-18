@@ -138,6 +138,8 @@ export default function ShopAddPage() {
                     <div className='flex justify-center my-12'>
                         <TextField
                             style={{ height: 'auto', width: 'auto', }}
+                            multiline={true}
+                            rows={2}
                             variant="outlined"
                             label="店名"
                             onChange={shopNameHandler}

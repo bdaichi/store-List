@@ -14,6 +14,7 @@ export async function createRequestRoom(request: Request) {
 }
 
 export async function deleteRequest(shopId: string) {
+    await db.collection('requests').doc(shopId).collection('messages').doc().delete();
     await db.collection('requests').doc(shopId).delete();
 }
 
@@ -29,4 +30,8 @@ export async function setLatestMassage(requestId: string, latestMessage: string)
     } catch (e) {
         console.log('setLatestMessageAntSetUpDatedAt Error: ', e)
     }
+}
+
+export async function updateRepuestName(shopId: string, requestName: string) {
+    await db.collection('requests').doc(shopId).set({ 'requestName': requestName }, { merge: true })
 }

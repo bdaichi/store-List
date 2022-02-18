@@ -5,6 +5,6 @@ type Props = {
 export default function ShopNameField(props: Props) {
 
     return (
-        <p className='whitespace-pre-wrap' style={{ fontFamily: 'Hannotate SC', textTransform: 'none', }}>{props.shopName}</p>
+        <p className='overflow-y-scroll h-8' style={{ fontFamily: 'Hannotate SC', textTransform: 'none', }}>{props.shopName}</p>
     )
 }

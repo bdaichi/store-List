@@ -1,7 +1,9 @@
 import { Button, TextField } from "@material-ui/core";
 import { useState } from "react";
 
+import Request from "../../../entity/Request";
 import Shop from "../../../entity/Shop";
+import { updateRepuestName } from "../../../service/request_service";
 import { updateShopData } from "../../../service/shop_service";
 
 type Props = {
@@ -11,6 +13,7 @@ type Props = {
 
 export default function UpdateShopNameFeild(props: Props) {
     const [editingName, setEditingName] = useState('')
+
     const [isEditingName, setIsEditingName] = useState(false)
 
     const editName = () => {
@@ -25,6 +28,7 @@ export default function UpdateShopNameFeild(props: Props) {
             }
             const updateShop = props.shop.copyWith(null, null, editingName, null, null, null, null, new Date())
             await updateShopData(updateShop)
+            await updateRepuestName(props.shop.shopId, editingName)
             setIsEditingName(false)
             props.setIsReloadData(false)
         } catch (e) {
@@ -51,8 +55,6 @@ export default function UpdateShopNameFeild(props: Props) {
                 <div>
                     <TextField
                         className='w-60'
-                        multiline={true}
-                        rows={2}
                         defaultValue={props.shop.shopName}
                         id='shopName'
                         label='表示名'

@@ -13,6 +13,10 @@ export async function createRequestRoom(request: Request) {
     console.log('createrequestRoom')
 }
 
+export async function deleteRequest(shopId: string) {
+    await db.collection('requests').doc(shopId).delete();
+}
+
 export async function fetchExistsRequests(shopId: string) {
     const snapshot = await db.collection('requests').where('shopId', '==', shopId).get();
     return (snapshot.docs.map((doc) => Request.fromJSON(doc.data())))

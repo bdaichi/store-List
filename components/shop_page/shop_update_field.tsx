@@ -13,6 +13,8 @@ import UpdateGoogleMap from "../../components/shop_page/shop_update_field/update
 import UpdateShopNameFeild from "../../components/shop_page/shop_update_field/update_shop_name_feild";
 import UpdateShopSummaryListFeild from "../../components/shop_page/shop_update_field/update_shop_summary_list_feild";
 import { uploadShopImageAndGetUrl } from "../../service/cloud_image_service";
+import { deleteRequest } from "../../service/request_service";
+import { deleteFavorites } from "../../service/favorites_service";
 
 type Props = {
     shop: Shop
@@ -38,8 +40,10 @@ export default function ShopUpdateField(props: Props) {
     }
 
     const deleteShopData = async () => {
-        if (props.shop) {
+        if (props.shop && currentUser) {
             await deleteShop(props.shop.shopId)
+            await deleteRequest(props.shop.shopId)
+            await deleteFavorites(currentUser.userId, props.shop.shopId)
             setIsConfirmation(false)
             router.push('/shop_list_page')
         }

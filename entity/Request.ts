@@ -54,7 +54,7 @@ class Request {
         }
     }
 
-    copyWith(requestName: string | null, shopId: string | null, createUserId: string | null, latestMessage: string | null,) {
+    copyWith(requestName: string | null, shopId: string | null, createUserId: string | null, latestMessage: string | null) {
         return new Request(
             requestName ?? this.requestName,
             shopId ?? this.shopId,

@@ -7,6 +7,7 @@ import { updateRepuestName } from "../../../service/request_service";
 import { updateShopData } from "../../../service/shop_service";
 
 type Props = {
+    request: Request[]
     shop: Shop
     setIsReloadData: any
 }
@@ -28,7 +29,10 @@ export default function UpdateShopNameFeild(props: Props) {
             }
             const updateShop = props.shop.copyWith(null, null, editingName, null, null, null, null, new Date())
             await updateShopData(updateShop)
-            await updateRepuestName(props.shop.shopId, editingName)
+            if (props.request && (props.request[0] != null)) {
+                const updateRequest = props.request[0].copyWith(editingName, null, null, null)
+                await updateRepuestName(props.shop.shopId, updateRequest)
+            }
             setIsEditingName(false)
             props.setIsReloadData(false)
         } catch (e) {

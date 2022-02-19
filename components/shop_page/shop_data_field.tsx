@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react
 import { useRouter } from "next/router";
 
 import { AuthContext } from "../../context/AuthContext";
-import { addMessage, createRequestRoom, fetchExistsRequests, setLatestMassage } from "../../service/request_service";
+import { addMessage, createRequestRoom, setLatestMassage } from "../../service/request_service";
 import { createFavorites, deleteFavorites } from "../../service/favorites_service";
 import Favorite from "../../entity/Favorites";
 import GoogleMapFeild from "../../components/shop_page/shop_data_field/google_map_field";
@@ -23,6 +23,7 @@ import { updateUserData } from "../../service/user_service";
 type Props = {
     shop: Shop
     favorite: Favorite | null
+    request: Request[]
     isOpenShopPage: boolean
     setIsReloadData: Dispatch<SetStateAction<boolean>>
 }
@@ -33,17 +34,10 @@ export default function ShopDataField(props: Props) {
     const { currentUser, reloadCurrentUserData } = useContext(AuthContext)
 
     const favoritesCountLimit = 20
-    const [requests, setRequests] = useState<Request[] | null>(null)
     const [sendMessage, setSendMessage] = useState('')
     const [alertMessage, setAlertMessage] = useState<string>('')
     const [isSignInAlert, setIsSignInAlert] = useState(false)
     const [isMessageField, setIsMessageField] = useState(false)
-
-    const fetchrequestsData = async () => {
-        if (currentUser && props.shop) {
-            setRequests(await fetchExistsRequests(props.shop.shopId))
-        }
-    }
 
     const registerFavoriteShop = async () => {
         if (props.shop && currentUser) {
@@ -92,7 +86,7 @@ export default function ShopDataField(props: Props) {
 
     const sendMessageAndUpdateLatestMessage = async () => {
         if (currentUser && props.shop) {
-            if (requests && (requests[0] != null)) {
+            if (props.request && (props.request[0] != null)) {
                 console.log('作成済み')
             } else {
                 const request = Request.createRequest(props.shop.shopName, props.shop.shopId, props.shop.createUserId, '')
@@ -123,13 +117,6 @@ export default function ShopDataField(props: Props) {
     const closeSignInAlert = () => {
         setIsSignInAlert(false)
     }
-
-    useEffect(() => {
-        if (!requests) {
-            fetchrequestsData()
-        }
-        console.log('requests', requests)
-    }, [currentUser, requests])
 
     return (
         <>{props.shop &&

@@ -6,6 +6,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 import { AuthContext } from "../../context/AuthContext";
 import { deleteShop, updateShopData } from "../../service/shop_service";
+import Request from "../../entity/Request";
 import Shop from "../../entity/Shop";
 import ShopImage from "../../components/shop_page/shop_data_field/shop_image";
 import ShopImageUpdateField from "../../components/common/shop_image_update_field";
@@ -17,6 +18,7 @@ import { deleteRequest } from "../../service/request_service";
 import { deleteFavorites } from "../../service/favorites_service";
 
 type Props = {
+    request: Request[]
     shop: Shop
     shopId: string
     setIsReloadData: Dispatch<SetStateAction<boolean>>
@@ -67,7 +69,7 @@ export default function ShopUpdateField(props: Props) {
                 <ShopImageUpdateField setCroppedShopImage={setCroppedShopImage} onClickFunction={updateShopImage} />
             </div>
             <div className='flex justify-center my-8 '>
-                <UpdateShopNameFeild shop={props.shop} setIsReloadData={props.setIsReloadData} />
+                <UpdateShopNameFeild request={props.request} shop={props.shop} setIsReloadData={props.setIsReloadData} />
             </div>
             <div className='flex justify-center my-8'>
                 <UpdateShopSummaryListFeild shop={props.shop} setIsReloadData={props.setIsReloadData} />

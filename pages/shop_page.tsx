@@ -6,9 +6,11 @@ import { useRouter } from "next/router";
 
 import { AuthContext } from "../context/AuthContext";
 import Favorite from "../entity/Favorites";
+import { fetchExistsRequests } from "../service/request_service";
 import { fetchFavorite } from "../service/favorites_service";
 import { fetchShop } from "../service/shop_service";
 import Header from "../components/common/header";
+import Request from "../entity/Request";
 import NavBar from "../components/common/nav_bar";
 import Shop from "../entity/Shop"
 import ShopDataField from "../components/shop_page/shop_data_field";
@@ -21,6 +23,7 @@ export default function ShopPage() {
 
     const [shop, setShop] = useState<Shop>()
     const [favorite, setFavorite] = useState<Favorite | null>(null)
+    const [requests, setRequests] = useState<Request[] | null>(null)
     const [alertMessage, setAlertMessage] = useState<string>('')
     const [isDisplayEditFeild, setIsDisyplayEditFeild] = useState(false)
     const [isReloadData, setIsReloadData] = useState(false)
@@ -38,6 +41,12 @@ export default function ShopPage() {
     const fetchFavoriteData = async () => {
         if (currentUser && shop) {
             setFavorite(await fetchFavorite(currentUser.userId, shop.shopId))
+        }
+    }
+
+    const fetchRequestsData = async () => {
+        if (currentUser && shop) {
+            setRequests(await fetchExistsRequests(shop.shopId))
         }
     }
 
@@ -66,20 +75,23 @@ export default function ShopPage() {
         if (currentUser && !favorite) {
             fetchFavoriteData()
         }
+        if (!requests) {
+            fetchRequestsData()
+        }
         setIsOpenShopPage(true)
-    }, [isReloadData, query, currentUser!]);
+    }, [isReloadData, query, currentUser!, requests]);
 
     return (
         <>
             <Header title='詳細ページ' />
-            <div>{shop &&
+            <div>{(shop && requests) &&
                 <>
                     <div className='sticky top-0 z-10'>
                         <NavBar />
                     </div>
                     {!isDisplayEditFeild ?
                         <div className='flex flex-col mt-28'>
-                            <ShopDataField shop={shop} favorite={favorite} isOpenShopPage={isOpenShopPage} setIsReloadData={setIsReloadData} />
+                            <ShopDataField shop={shop} favorite={favorite} request={requests} isOpenShopPage={isOpenShopPage} setIsReloadData={setIsReloadData} />
                             <div className='my-4'>{(alertMessage != '') &&
                                 <div>
                                     <p className='flex justify-center text-red-400'>{alertMessage}</p>
@@ -104,7 +116,7 @@ export default function ShopPage() {
                         <div className='flex flex-col'>{currentUser &&
                             <div>
                                 <div>
-                                    <ShopUpdateField shop={shop} shopId={shopPageId} setIsReloadData={setIsReloadData} />
+                                    <ShopUpdateField request={requests} shop={shop} shopId={shopPageId} setIsReloadData={setIsReloadData} />
                                 </div>
                                 <div className='flex justify-center mb-20 ml-4 z-0'>
                                     <IconButton onClick={closeEditFeild}>

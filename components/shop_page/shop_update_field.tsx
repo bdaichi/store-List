@@ -16,6 +16,7 @@ import UpdateShopSummaryListFeild from "../../components/shop_page/shop_update_f
 import { uploadShopImageAndGetUrl } from "../../service/cloud_image_service";
 import { deleteRequest } from "../../service/request_service";
 import { deleteFavorites } from "../../service/favorites_service";
+import { updateUserData } from "../../service/user_service";
 
 type Props = {
     request: Request[]
@@ -46,6 +47,8 @@ export default function ShopUpdateField(props: Props) {
             await deleteShop(props.shop.shopId)
             await deleteRequest(props.shop.shopId)
             await deleteFavorites(currentUser.userId, props.shop.shopId)
+            const updateData = currentUser.copyWith(null, null, currentUser.favoritesCount - 1)
+            await updateUserData(updateData)
             setIsConfirmation(false)
             router.push('/shop_list_page')
         }

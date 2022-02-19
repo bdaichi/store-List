@@ -6,6 +6,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 import { AuthContext } from "../../context/AuthContext";
 import { deleteShop, updateShopData } from "../../service/shop_service";
+import Request from "../../entity/Request";
 import Shop from "../../entity/Shop";
 import ShopImage from "../../components/shop_page/shop_data_field/shop_image";
 import ShopImageUpdateField from "../../components/common/shop_image_update_field";
@@ -15,8 +16,10 @@ import UpdateShopSummaryListFeild from "../../components/shop_page/shop_update_f
 import { uploadShopImageAndGetUrl } from "../../service/cloud_image_service";
 import { deleteRequest } from "../../service/request_service";
 import { deleteFavorites } from "../../service/favorites_service";
+import { updateUserData } from "../../service/user_service";
 
 type Props = {
+    request: Request[]
     shop: Shop
     shopId: string
     setIsReloadData: Dispatch<SetStateAction<boolean>>
@@ -44,6 +47,10 @@ export default function ShopUpdateField(props: Props) {
             await deleteShop(props.shop.shopId)
             await deleteRequest(props.shop.shopId)
             await deleteFavorites(currentUser.userId, props.shop.shopId)
+            if (props.request && (props.request[0] != null)) {
+                const updateData = currentUser.copyWith(null, null, currentUser.favoritesCount - 1)
+                await updateUserData(updateData)
+            }
             setIsConfirmation(false)
             router.push('/shop_list_page')
         }
@@ -67,7 +74,7 @@ export default function ShopUpdateField(props: Props) {
                 <ShopImageUpdateField setCroppedShopImage={setCroppedShopImage} onClickFunction={updateShopImage} />
             </div>
             <div className='flex justify-center my-8 '>
-                <UpdateShopNameFeild shop={props.shop} setIsReloadData={props.setIsReloadData} />
+                <UpdateShopNameFeild request={props.request} shop={props.shop} setIsReloadData={props.setIsReloadData} />
             </div>
             <div className='flex justify-center my-8'>
                 <UpdateShopSummaryListFeild shop={props.shop} setIsReloadData={props.setIsReloadData} />

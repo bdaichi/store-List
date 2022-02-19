@@ -47,8 +47,10 @@ export default function ShopUpdateField(props: Props) {
             await deleteShop(props.shop.shopId)
             await deleteRequest(props.shop.shopId)
             await deleteFavorites(currentUser.userId, props.shop.shopId)
-            const updateData = currentUser.copyWith(null, null, currentUser.favoritesCount - 1)
-            await updateUserData(updateData)
+            if (props.request && (props.request[0] != null)) {
+                const updateData = currentUser.copyWith(null, null, currentUser.favoritesCount - 1)
+                await updateUserData(updateData)
+            }
             setIsConfirmation(false)
             router.push('/shop_list_page')
         }

@@ -23,7 +23,7 @@ export default function ShopPage() {
 
     const [shop, setShop] = useState<Shop>()
     const [favorite, setFavorite] = useState<Favorite | null>(null)
-    const [requests, setRequests] = useState<Request[] | null>(null)
+    const [requests, setRequests] = useState<Request[]>([])
     const [alertMessage, setAlertMessage] = useState<string>('')
     const [isDisplayEditFeild, setIsDisyplayEditFeild] = useState(false)
     const [isReloadData, setIsReloadData] = useState(false)
@@ -85,7 +85,7 @@ export default function ShopPage() {
     return (
         <>
             <Header title='詳細ページ' />
-            <div>{(shop && requests) &&
+            <div>{shop &&
                 <>
                     <div className='sticky top-0 z-10'>
                         <NavBar />

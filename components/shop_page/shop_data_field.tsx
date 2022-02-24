@@ -85,7 +85,7 @@ export default function ShopDataField(props: Props) {
     }
 
     const sendMessageAndUpdateLatestMessage = async () => {
-        if (currentUser && props.shop) {
+        if (props.shop) {
             if (props.request && (props.request[0] != null)) {
                 console.log('作成済み')
             } else {
@@ -93,13 +93,11 @@ export default function ShopDataField(props: Props) {
                 await createRequestRoom(request)
             }
         }
-        if (currentUser) {
-            const message = Message.createMessage(sendMessage, '',)
-            await addMessage(props.shop.shopId, message)
-            await setLatestMassage(props.shop.shopId, sendMessage)
-            setSendMessage('')
-            setIsMessageField(false)
-        }
+        const message = Message.createMessage(sendMessage, '',)
+        await addMessage(props.shop.shopId, message)
+        await setLatestMassage(props.shop.shopId, sendMessage)
+        setSendMessage('')
+        setIsMessageField(false)
     }
 
     const routerSignIn = () => {

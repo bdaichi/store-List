@@ -23,7 +23,7 @@ import { updateUserData } from "../../service/user_service";
 type Props = {
     shop: Shop
     favorite: Favorite | null
-    request: Request[]
+    request: Request[] | null
     isOpenShopPage: boolean
     setIsReloadData: Dispatch<SetStateAction<boolean>>
 }

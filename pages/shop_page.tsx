@@ -23,7 +23,7 @@ export default function ShopPage() {
 
     const [shop, setShop] = useState<Shop>()
     const [favorite, setFavorite] = useState<Favorite | null>(null)
-    const [requests, setRequests] = useState<Request[]>([])
+    const [requests, setRequests] = useState<Request[] | null>(null)
     const [alertMessage, setAlertMessage] = useState<string>('')
     const [isDisplayEditFeild, setIsDisyplayEditFeild] = useState(false)
     const [isReloadData, setIsReloadData] = useState(false)

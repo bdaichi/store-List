@@ -19,7 +19,7 @@ import { deleteFavorites } from "../../service/favorites_service";
 import { updateUserData } from "../../service/user_service";
 
 type Props = {
-    request: Request[]
+    request: Request[] | null
     shop: Shop
     shopId: string
     setIsReloadData: Dispatch<SetStateAction<boolean>>

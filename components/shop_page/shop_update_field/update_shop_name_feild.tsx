@@ -7,7 +7,7 @@ import { updateRepuestName } from "../../../service/request_service";
 import { updateShopData } from "../../../service/shop_service";
 
 type Props = {
-    request: Request[]
+    request: Request[] | null
     shop: Shop
     setIsReloadData: any
 }

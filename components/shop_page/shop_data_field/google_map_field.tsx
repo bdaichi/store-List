@@ -77,43 +77,31 @@ export default function GoogleMapFeild(props: Props) {
 
     const getCurrentLocation = async (map: google.maps.Map) => {
         const infoWindow = new google.maps.InfoWindow();
-        const locationButton = document.createElement("button");
+        setIsLoading(true)
 
-        locationButton.textContent = "現在地";
-        locationButton.style.color = 'white'
-        locationButton.style.fontSize = '17px'
-        locationButton.style.margin = '10px'
-        locationButton.style.backgroundColor = '#00a6af'
-        locationButton.style.width = '100px'
-        locationButton.style.height = '40px'
-        locationButton.classList.add("custom-map-control-button");
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position: GeolocationPosition) => {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
 
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(locationButton);
-
-        locationButton.addEventListener("click", () => {
-
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position: GeolocationPosition) => {
-                        const pos = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude,
-                        };
-
-                        infoWindow.setPosition(pos);
-                        infoWindow.setContent("現在地");
-                        infoWindow.open(map);
-                        setCurrentLocation(pos)
-                    },
-                    () => {
-                        handleLocationError(true, infoWindow, map.getCenter()!);
-                    }
-                );
-            }
-        });
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent("現在地");
+                    infoWindow.open(map);
+                    setCurrentLocation(pos)
+                },
+                () => {
+                    handleLocationError(true, true, infoWindow, map.getCenter()!);
+                    setIsRouteGuidance(false)
+                }
+            );
+        }
 
         const handleLocationError = (
+            enableHighAccuracy: boolean,
             browserHasGeolocation: boolean,
             infoWindow: google.maps.InfoWindow,
             pos: google.maps.LatLng
@@ -124,6 +112,8 @@ export default function GoogleMapFeild(props: Props) {
                     ? "Error: The Geolocation service failed."
                     : "Error: Your browser doesn't support geolocation."
             );
+            enableHighAccuracy ? setIsRouteGuidance(true) : setIsRouteGuidance(true)
+            console.log('handleLocationError')
         }
         infoWindow.open(map);
 

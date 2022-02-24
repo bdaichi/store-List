@@ -78,6 +78,7 @@ export default function ShopPage() {
         if (!requests) {
             fetchRequestsData()
         }
+        console.log('requests', requests)
         setIsOpenShopPage(true)
     }, [isReloadData, query, currentUser!, requests]);
 

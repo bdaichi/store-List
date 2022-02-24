@@ -94,14 +94,13 @@ export default function GoogleMapFeild(props: Props) {
                     setCurrentLocation(pos)
                 },
                 () => {
-                    handleLocationError(true, true, infoWindow, map.getCenter()!);
+                    handleLocationError(true, infoWindow, map.getCenter()!);
                     setIsRouteGuidance(false)
                 }
             );
         }
 
         const handleLocationError = (
-            enableHighAccuracy: boolean,
             browserHasGeolocation: boolean,
             infoWindow: google.maps.InfoWindow,
             pos: google.maps.LatLng
@@ -112,8 +111,6 @@ export default function GoogleMapFeild(props: Props) {
                     ? "Error: The Geolocation service failed."
                     : "Error: Your browser doesn't support geolocation."
             );
-            enableHighAccuracy ? setIsRouteGuidance(true) : setIsRouteGuidance(true)
-            console.log('handleLocationError')
         }
         infoWindow.open(map);
 

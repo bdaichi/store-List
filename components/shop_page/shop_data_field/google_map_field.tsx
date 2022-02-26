@@ -93,7 +93,8 @@ export default function GoogleMapFeild(props: Props) {
                     infoWindow.open(map);
                     setCurrentLocation(pos)
                 },
-                () => {
+                (e) => {
+                    console.log('google_map_field errorMessage', e.message)
                     handleLocationError(true, infoWindow, map.getCenter()!);
                     setIsRouteGuidance(false)
                 }

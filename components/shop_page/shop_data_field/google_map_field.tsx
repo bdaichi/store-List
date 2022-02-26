@@ -15,6 +15,7 @@ const mapContainerStyle = {
 };
 
 const options = {
+    enableHighAccuracy: true,
     disableDefaultUI: true,
     // デフォルトUI（衛星写真オプションなど）をキャンセルします。
     zoomControl: true,

@@ -1,0 +1,33 @@
+<？xml version = "1.0" encoding = "UTF-8"？>
+<！DOCTYPE plist PUBLIC "-// Apple // DTD PLIST 1.0 // EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version = "1.0">
+<dict>
+  <key> NSAppTransportSecurity </ key>
+  <dict>
+    <key> NSExceptionDomains </ key>
+    <dict>
+      <key> firstsite.com </ key>
+      <dict>
+        <key> NSIncludesSubdomains </ key>
+        <true />
+        <key> NSTemporaryExceptionAllowsInsecureHTTPLoads </ key>
+        <true />
+      </ dict>
+      <key> secondsite.com </ key>
+      <dict>
+        <key> NSIncludesSubdomains </ key>
+        <true />
+        <key> NSTemporaryExceptionAllowsInsecureHTTPLoads </ key>
+        <true />
+      </ dict>
+    </ dict>
+  </ dict>
+</ dict>
+</ plist>
+
+<key> NSAppTransportSecurity </ key>
+<dict>
+  <！-すべての接続を許可するために含める; 可能であれば避けてください->
+  <key> NSAllowsArbitraryLoads </ key>
+  <true />
+</ dict>

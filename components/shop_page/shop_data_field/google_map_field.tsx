@@ -127,7 +127,7 @@ export default function GoogleMapFeild(props: Props) {
 
     const addIconToMap = async (destination: google.maps.LatLng, map: google.maps.Map) => {
         const icon = {
-            url: 'http://maps.google.co.jp/mapfiles/ms/icons/red-dot.png',
+            url: 'googlemap_marker.png',
             size: new google.maps.Size(71, 71),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(17, 34),

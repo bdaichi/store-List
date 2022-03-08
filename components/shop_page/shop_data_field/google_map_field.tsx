@@ -30,16 +30,8 @@ type Props = {
 }
 
 export default function GoogleMapFeild(props: Props) {
-    if (process.env.NEXT_PUBLIC_GOOGLEMAP_API_KEY == undefined) {
-        console.log('googlemap_apikey undefined')
-        return (
-            <>
-                <p>ERROR</p>
-            </>
-        )
-    }
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLEMAP_API_KEY,
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLEMAP_API_KEY!,
         libraries: ['places'],
     });
 

@@ -9,12 +9,12 @@ export let db: firebase.firestore.Firestore;
 export let storage: firebase.storage.Storage;
 try {
     const config = {
-        apiKey: "AIzaSyCdkl_d0uSWVir96mnY_ag9P7xd-ZHr4wc",
-        authDomain: "shop-web-app-acfb0.firebaseapp.com",
-        projectId: "shop-web-app-acfb0",
-        storageBucket: "shop-web-app-acfb0.appspot.com",
-        messagingSenderId: "175501893513",
-        appId: "1:175501893513:web:6a786269a0d277a859cb58"
+        apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+        authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+        storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+        appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
     };
     if (!firebase.apps.length) {
         firebase.initializeApp(config);

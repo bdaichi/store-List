@@ -31,9 +31,10 @@ type Props = {
 
 export default function GoogleMapFeild(props: Props) {
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "AIzaSyChtGG5A7NTWuXXvwPjCiWiM6a-y_pnt9o",
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLEMAP_API_KEY!,
         libraries: ['places'],
     });
+
 
     const [currentLocation, setCurrentLocation] = useState<any>()
     const [isDisplayDestinationMarker, setIsDisplayDestinationMarker] = useState(true)

@@ -38,6 +38,7 @@ export default function GoogleMapFeild(props: Props) {
 
     const [currentLocation, setCurrentLocation] = useState<any>()
     const [isDisplayDestinationMarker, setIsDisplayDestinationMarker] = useState(true)
+    const [googleMapDestinationUrl, setGoogleMapDestinationUrl] = useState<string>('')
     const [destination, setDestination] = useState<google.maps.LatLng | null>(null)
     const [isRouteGuidance, setIsRouteGuidance] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
@@ -123,6 +124,7 @@ export default function GoogleMapFeild(props: Props) {
         if (props.shopLocation != null) {
             console.log('setShopLocation')
             setDestination(new google.maps.LatLng(props.shopLocation[0], props.shopLocation[1]))
+            setGoogleMapDestinationUrl(`https://www.google.com/maps?q=${props.shopLocation[0]},${props.shopLocation[1]}`)
         }
     }
 
@@ -309,6 +311,11 @@ export default function GoogleMapFeild(props: Props) {
                         }</div>
                     </>
                 }</div>
+                    <div className='mb-4 flex justify-center'>{props.shopLocation &&
+                        <a href={googleMapDestinationUrl} className='text-lg border-b pb-1 px-2' style={{ fontFamily: '筑紫A丸ゴシック', color: '#00a6af', borderColor: '#00a6af', }}>
+                            GoogleMapで開く
+                        </a>
+                    }</div>
                     <div className='flex justify-center flex-col shadow-2xl mr-2 md:'>
                         <GoogleMap
                             id="map"
@@ -329,7 +336,7 @@ export default function GoogleMapFeild(props: Props) {
     } else {
         return (
             <div>
-
+                <p>Error</p>
             </div>
         )
     }

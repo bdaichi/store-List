@@ -75,32 +75,6 @@ export default function InfoPage() {
                         <p className='flex justify-center'>幸いです</p>
                     </div>
                 </div>
-                {/* <div className='flex justify-center mt-16' style={{ fontFamily: '筑紫A丸ゴシック', }}>
-                    <p className='text-xl'>開発者から</p>
-                </div>
-                <div className='rounded-xl shadow-inner my-4 mx-12 p-8' style={{ fontFamily: '筑紫A丸ゴシック', borderWidth: 2, borderColor: '#00a6af', }}>
-                    <p>
-                        このアプリは私が初めて公開するアプリになります。
-                        私一人では力及ばす、制作は兄に協力してもらいながらやっていました
-                    </p>
-                    <p className='my-8'>制作開始時の私は開発の経験など皆無で、
-                        開発環境を整えるのにも、苦労していました。
-                        もちろん最初の方はうまくいかず、
-                        毎日毎日エラー三昧。
-                        コード実行時に祈るのが癖になってしまいました(笑)
-                        祈りが届くことは全く無かったのですが...
-                        うまくいかないことだらけのアプリ制作で、
-                        何度も挫折をしました。
-                        それでも私を支えてくれる人がいたので、
-                        その人の期待に応えたい、支えを無駄にしたくない、
-                        と思い ’七転八起’ で挫折しても何度でも立ち上がり、
-                        無事公開までたどり着くことができました。</p>
-                    <p>
-                        “初めて”公開するアプリになりますので、
-                        至らぬ点が多いと思いますが、
-                        ぜひ使ってください
-                    </p>
-                </div> */}
             </div>
         </>
     )
